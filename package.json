@@ -1,0 +1,27 @@
+{
+  "name": "semana-javascript-expert06",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "live-reload": "nodemon server/index.js",
+    "test": "LOG_DISABLED=true NODE_OPTIONS=--experimental-vm-modules jest --no-cache",
+    "test:watch": "LOG_DISABLED=true NODE_OPTIONS=--experimental-vm-modules jest --no-cache --watchAll",
+    "test:coverage": "LOG_DISABLED=true NODE_OPTIONS=--experimental-vm-modules jest --no-cache --coverage tests/unit"
+  },
+  "engines": {
+    "node": "17"
+  },
+  "repository": "git@github.com:alisonglima/semana-javascript-expert06.git",
+  "author": "Alison Gustavo de Lima <alisonglima.dev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "27",
+    "nodemon": "2"
+  },
+  "dependencies": {
+    "pino": "7.8.0",
+    "pino-pretty": "7.5.3"
+  }
+}

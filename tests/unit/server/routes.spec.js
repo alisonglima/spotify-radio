@@ -1,4 +1,4 @@
-import { jest, expect, describe, it, afterEach } from "@jest/globals";
+import { jest, expect, describe, it, afterEach, beforeAll } from "@jest/globals";
 
 import config from "../../../server/config/index.js";
 import { Controller } from "../../../server/controller/index.js";
@@ -11,14 +11,19 @@ const {
   constants: { CONTENT_TYPE },
 } = config;
 
-describe("#Routes - test suite for api response", () => {
+let params;
+
+describe("#Routes - test suite for api routes", () => {
+  beforeAll(() => {
+    params = TestUtil.defaultHandleParams();
+  });
+
   afterEach(() => {
-    // jest.resetAllMocks();
+    jest.resetAllMocks();
     jest.clearAllMocks();
   });
 
   it("GET / - should redirect to home page", async () => {
-    const params = TestUtil.defaultHandleParams();
     params.request.method = "GET";
     params.request.url = "/";
 
@@ -31,11 +36,10 @@ describe("#Routes - test suite for api response", () => {
   });
 
   it(`GET /home - should response with ${pages.home} file stream`, async () => {
-    const params = TestUtil.defaultHandleParams();
     params.request.method = "GET";
     params.request.url = "/home";
 
-    const mockFileStream = TestUtil.generateReadableStream(["dfdqf"]);
+    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
     jest.spyOn(Controller.prototype, "getFileStream").mockResolvedValue({
       stream: mockFileStream,
@@ -50,11 +54,10 @@ describe("#Routes - test suite for api response", () => {
   });
 
   it(`GET /controller - should response with ${pages.controller} file stream`, async () => {
-    const params = TestUtil.defaultHandleParams();
     params.request.method = "GET";
     params.request.url = "/controller";
 
-    const mockFileStream = TestUtil.generateReadableStream(["data"]);
+    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
     jest.spyOn(Controller.prototype, "getFileStream").mockResolvedValue({
       stream: mockFileStream,
@@ -69,14 +72,13 @@ describe("#Routes - test suite for api response", () => {
   });
 
   it(`GET /index.html - should response with file stream`, async () => {
-    const params = TestUtil.defaultHandleParams();
     const filename = "/index.html";
     params.request.method = "GET";
     params.request.url = filename;
 
     const expectedType = ".html";
 
-    const mockFileStream = TestUtil.generateReadableStream(["data"]);
+    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
     jest.spyOn(Controller.prototype, "getFileStream").mockResolvedValue({
       stream: mockFileStream,
@@ -95,14 +97,13 @@ describe("#Routes - test suite for api response", () => {
   });
 
   it(`GET /file.ext - should response with file stream`, async () => {
-    const params = TestUtil.defaultHandleParams();
     const filename = "/file.ext";
     params.request.method = "GET";
     params.request.url = filename;
 
     const expectedType = ".ext";
 
-    const mockFileStream = TestUtil.generateReadableStream(["data"]);
+    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
     jest.spyOn(Controller.prototype, "getFileStream").mockResolvedValue({
       stream: mockFileStream,
@@ -119,7 +120,6 @@ describe("#Routes - test suite for api response", () => {
   });
 
   it(`POST /unknown - given an inexistent route is should response with 404`, async () => {
-    const params = TestUtil.defaultHandleParams();
     params.request.method = "POST";
     params.request.url = "/unknown";
 
@@ -131,7 +131,6 @@ describe("#Routes - test suite for api response", () => {
 
   describe("exceptions", () => {
     it("should respond with 404 when receiving a non-existent file", async () => {
-      const params = TestUtil.defaultHandleParams();
       params.request.method = "GET";
       params.request.url = "/index.png";
 
@@ -146,7 +145,6 @@ describe("#Routes - test suite for api response", () => {
     });
 
     it("should respond with 500 when receiving an unexpected error", async () => {
-      const params = TestUtil.defaultHandleParams();
       params.request.method = "GET";
       params.request.url = "/index.png";
 

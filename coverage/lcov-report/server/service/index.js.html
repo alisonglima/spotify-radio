@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -110,30 +110,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,27 +152,27 @@ const {
 } = config;
 &nbsp;
 class Service {
-<span class="fstat-no" title="function not covered" >  cr</span>eateFileStream(filename) {
-<span class="cstat-no" title="statement not covered" >    return fs.createReadStream(filename);</span>
+  createFileStream(filename) {
+    return fs.createReadStream(filename);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync getFileInfo(file) {
+  async getFileInfo(file) {
     // file = home/index.html
-    const fullFilePath = <span class="cstat-no" title="statement not covered" >join(publicDirectory, file);</span>
+    const fullFilePath = join(publicDirectory, file);
     // valida se existe, se não existe estoura erro!!
-<span class="cstat-no" title="statement not covered" >    await fsPromises.access(fullFilePath);</span>
-    const fileType = <span class="cstat-no" title="statement not covered" >extname(fullFilePath);</span>
+    await fsPromises.access(fullFilePath);
+    const fileType = extname(fullFilePath);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return {</span>
+    return {
       name: fullFilePath,
       type: fileType,
     };
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync getFileStream(file) {
-    const { name, type } = <span class="cstat-no" title="statement not covered" >await this.getFileInfo(file);</span>
+  async getFileStream(file) {
+    const { name, type } = await this.getFileInfo(file);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return {</span>
+    return {
       stream: this.createFileStream(name),
       type,
     };
@@ -187,7 +187,7 @@ export { Service };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Mar 14 2022 17:45:47 GMT-0300 (Horário Padrão de Brasília)
+                at Tue Mar 15 2022 08:32:54 GMT-0300 (Horário Padrão de Brasília)
             </div>
         <script src="../../prettify.js"></script>
         <script>

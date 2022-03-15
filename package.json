@@ -13,7 +13,7 @@
   "engines": {
     "node": "17"
   },
-  "repository": "git@github.com:alisonglima/semana-javascript-expert06.git",
+  "repository": "git@github.com:alisonglima/spotify-radio.git",
   "author": "Alison Gustavo de Lima <alisonglima.dev@gmail.com>",
   "license": "MIT",
   "devDependencies": {

@@ -1,10 +1,10 @@
-# Spotify Radio - Semana JS Expert 6.0
+# Spotify Radio - JS Expert Week 6.0
 
-Seja bem vindo(a) à sexta Semana Javascript Expert. Este é o código inicial para iniciar nossa jornada.
+Welcome to the sixth Javascript Expert Week. This is the starting code to start our journey.
 
-Marque esse projeto com uma estrela 🌟
+Tag this project with a star 🌟
 
-Acesse a [**comunidade exclusiva no discord**](https://bit.ly/semanajsexpert-discord) para tirar suas dúvidas e conhecer pessoas:
+Access the [**exclusive discord community**](https://bit.ly/semanajsexpert-discord) to ask your questions and meet people:
 
 ## Preview
 
@@ -14,48 +14,48 @@ Acesse a [**comunidade exclusiva no discord**](https://bit.ly/semanajsexpert-dis
 
 - Web API
 
-  - [ ] Deve atingir 100% de cobertura de código em testes
-  - [ ] Deve ter testes end to end validando todas as rotas da API
-  - [x] Deve entregar arquivos estáticos como Node.js Stream
-  - [ ] Deve entregar arquivos de música como Node.js Stream
-  - [ ] Dado um usuário desconectado, não deve quebrar a API
-  - [ ] Mesmo que vários comandos sejam desparados ao mesmo tempo, não deve quebrar a API
-  - [x] Caso aconteça um erro inesperado, a API deve continuar funcionando
-  - [ ] O projeto precisa ser executado em ambientes Linux, Mac e Windows
+  - [ ] Must achieve 100% code coverage in tests
+  - [ ] Must have end to end tests validating all API routes
+  - [x] Must deliver static files like Node.js Stream
+  - [ ] Must deliver music files as Node.js Stream
+  - [ ] Given a disconnected user, should not break API
+  - [ ] Even if multiple commands are fired at the same time, it should not break the API
+  - [x] If an unexpected error occurs, the API should continue working
+  - [ ] The project needs to run on Linux, Mac and Windows environments
 
 - Web App
   - Client
-    - [ ] Deve reproduzir a transmissão
-    - [ ] Não deve pausar se algum efeito for adicionado
+    - [ ] Must play the broadcast
+    - [ ] Shouldn't pause if any effects are added
   - Controller
-    - [ ] Deve atingir 100% de cobertura de código em testes
-    - [ ] Deve poder iniciar ou parar uma transmissão
-    - [ ] Deve enviar comandos para adicionar audio efeitos à uma transmissão
+    - [ ] Must achieve 100% code coverage in tests
+    - [ ] Must be able to start or stop a broadcast
+    - [ ] Must send commands to add audio effects to a stream
 
-## Tarefas por aula
+## Tasks per class
 
-- Aula 01: Cobrir as camadas service e route com testes unitários e alcançar 100% de code coverage
-- Aula 02: Manter 100% de code coverage e implementar testes e2e para toda a API
-- Aula 03: implementar testes unitários para o frontend e manter 100% de code coverage
+- Lesson 01: Cover service and route layers with unit tests and achieve 100% code coverage
+- Lesson 02: Maintain 100% code coverage and implement e2e tests for the entire API
+- Lesson 03: implement unit tests for the frontend and maintain 100% code coverage
 - **PLUS**:
-  - [ ] disponibilizar um novo efeito
-    - [ ] adicionar um botão novo no controlador
-    - [ ] adicionar um som de efeito novo para a pasta `audios/fx/`
-    - [ ] republicar no heroku
+  - [ ] provide a new effect
+    - [ ] add a new button on the controller
+    - [ ] add a new effect sound to the `audios/fx/` folder
+    - [ ] repost on heroku
 
-### Considerações
+### Considerations
 
-- Tire suas dúvidas sobre os desafios em nossa comunidade, o objetivo é você aprender de forma divertida. Surgiu dúvidas? Pergunte por lá!
+- Ask your questions about the challenges in our community, the goal is for you to learn in a fun way. Doubts arise? Ask over there!
 
-- Ao completar qualquer um dos desafios, envie no canal **#desafios** da comunidade no [**Discord**](https://bit.ly/semanajsexpert-discord)
+- When completing any of the challenges, send it to the **#challenges** community channel on [**Discord**](https://bit.ly/semanajsexpert-discord)
 
-### Créditos aos áudios usados
+### Credits to the audios used
 
-#### Transmissão
+#### Streaming
 
 - [English Conversation](https://youtu.be/ytmMipczEI8)
 
-#### Efeitos
+#### Effects
 
 - [Applause](https://youtu.be/mMn_aYpzpG0)
 - [Applause Audience](https://youtu.be/3IC76o_lhFw)
@@ -65,10 +65,10 @@ Acesse a [**comunidade exclusiva no discord**](https://bit.ly/semanajsexpert-dis
 
 ## FAQ
 
-- `NODE_OPTIONS` não é um comando reconhecido pelo sistema, o que fazer?
+- `NODE_OPTIONS` is not a system recognized command, what to do?
 
-  - Se você estiver no Windows, a forma de criar variáveis de ambiente é diferente. Você deve usar a palavra `set` antes do comando.
+  - If you are on Windows, the way to create environment variables is different. You must use the word `set` before the command.
   - Ex: ` "test": "set NODE_OPTIONS=--experimental-vm-modules && npx jest --runInBand",`
 
-- Rodei `npm test` mas nada acontece, o que fazer?
-  - Verifique a versão do seu Node.js. Estamos usando na versão 17. Entre no [site do node.js](https://nodejs.org) e baixe a versão mais recente.
+- I ran `npm test` but nothing happens, what to do?
+  - Check your Node.js version. We are using version 17. Go to [node.js website](https://nodejs.org) and download the latest version.

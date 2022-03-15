@@ -14,15 +14,16 @@ describe("#Controller - test suite for api controller", () => {
   });
 
   it("getFileStream() - should return a fileStream ", async () => {
-    const controller = new Controller();
-    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
     const expectedType = ".html";
+
+    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
     jest.spyOn(Service.prototype, "getFileStream").mockResolvedValue({
       stream: mockFileStream,
       type: expectedType,
     });
 
+    const controller = new Controller();
     const controllerReturn = await controller.getFileStream(pages.home);
 
     expect(Service.prototype.getFileStream).toBeCalledWith(pages.home);

@@ -73,10 +73,10 @@ describe("#Routes - test suite for api routes", () => {
 
   it(`GET /index.html - should response with file stream`, async () => {
     const filename = "/index.html";
+    const expectedType = ".html";
+
     params.request.method = "GET";
     params.request.url = filename;
-
-    const expectedType = ".html";
 
     const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
@@ -98,10 +98,10 @@ describe("#Routes - test suite for api routes", () => {
 
   it(`GET /file.ext - should response with file stream`, async () => {
     const filename = "/file.ext";
+    const expectedType = ".ext";
+
     params.request.method = "GET";
     params.request.url = filename;
-
-    const expectedType = ".ext";
 
     const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 

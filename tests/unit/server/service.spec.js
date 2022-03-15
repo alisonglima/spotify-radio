@@ -20,12 +20,12 @@ describe("#Service - test suite for api service", () => {
 
   it("createFileStream() - should create a read stream and return it", async () => {
     const file = "/index.html";
-    const mockFileStream = TestUtil.generateReadableStream(["data"]);
 
-    const service = new Service();
+    const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
     jest.spyOn(fs, "createReadStream").mockResolvedValue(mockFileStream);
 
+    const service = new Service();
     const serviceReturn = service.createFileStream(file);
 
     expect(fs.createReadStream).toHaveBeenCalledWith(file);
@@ -37,18 +37,17 @@ describe("#Service - test suite for api service", () => {
     const expectedType = ".html";
     const expectedFullFilePath = publicDirectory + file;
 
-    const service = new Service();
-
     jest.spyOn(path, "join").mockReturnValue(file);
     jest.spyOn(fsPromises, "access").mockResolvedValue();
     jest.spyOn(path, "extname").mockReturnValue(expectedType);
 
+    const service = new Service();
     const serviceReturn = await service.getFileInfo(file);
 
     expect(fsPromises.access).toHaveBeenCalledWith(expectedFullFilePath);
     expect(serviceReturn).toStrictEqual({
-      type: expectedType,
       name: expectedFullFilePath,
+      type: expectedType,
     });
   });
 
@@ -58,8 +57,6 @@ describe("#Service - test suite for api service", () => {
 
     const mockFileStream = TestUtil.generateReadableStream(["anything"]);
 
-    const service = new Service();
-
     jest.spyOn(Service.prototype, "getFileInfo").mockReturnValue({
       stream: mockFileStream,
       type: expectedType,
@@ -67,6 +64,7 @@ describe("#Service - test suite for api service", () => {
 
     jest.spyOn(Service.prototype, "createFileStream").mockReturnValue(mockFileStream);
 
+    const service = new Service();
     const serviceReturn = await service.getFileStream(file);
 
     expect(Service.prototype.getFileInfo).toHaveBeenCalledWith(file);

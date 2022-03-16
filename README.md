@@ -17,15 +17,15 @@ Access the [**exclusive discord community**](https://bit.ly/semanajsexpert-disco
   - [ ] Must achieve 100% code coverage in tests
   - [ ] Must have end to end tests validating all API routes
   - [x] Must deliver static files like Node.js Stream
-  - [ ] Must deliver music files as Node.js Stream
-  - [ ] Given a disconnected user, should not break API
+  - [x] Must deliver music files as Node.js Stream
+  - [x] Given a disconnected user, should not break API
   - [ ] Even if multiple commands are fired at the same time, it should not break the API
   - [x] If an unexpected error occurs, the API should continue working
-  - [ ] The project needs to run on Linux, Mac and Windows environments
+  - [x] The project needs to run on Linux, Mac and Windows environments
 
 - Web App
   - Client
-    - [ ] Must play the broadcast
+    - [x] Must play the broadcast
     - [ ] Shouldn't pause if any effects are added
   - Controller
     - [ ] Must achieve 100% code coverage in tests

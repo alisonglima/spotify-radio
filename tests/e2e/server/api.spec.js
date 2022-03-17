@@ -9,7 +9,7 @@ const possibleCommands = { start: "start", stop: "stop" };
 describe("API E2E Suite Test", () => {
   const pipeAndReadStreamData = TestUtil.pipeAndReadStreamData;
 
-  describe("client workflow", () => {
+  describe("/stream client workflow", () => {
     const getTestServer = TestUtil.getTestServer;
     const commandSender = TestUtil.commandSender;
 
@@ -40,6 +40,24 @@ describe("API E2E Suite Test", () => {
 
       expect(buffer).toBeInstanceOf(Buffer);
       expect(buffer.length).toBeGreaterThan(1000);
+    });
+  });
+
+  describe("/ client workflow", () => {
+    const getTestServer = TestUtil.getTestServer;
+
+    it("should not receive data stream if the process is not playing", async () => {
+      const server = await getTestServer();
+      const onChunk = jest.fn();
+
+      const testServerResponse = await server.testServer.get("/");
+
+      console.log(testServerResponse);
+
+      await setTimeout(RETENTION_DATA_PERIOD);
+      server.kill();
+
+      expect(onChunk).not.toHaveBeenCalled();
     });
   });
 });

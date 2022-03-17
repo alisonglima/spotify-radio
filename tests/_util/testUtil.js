@@ -101,4 +101,4 @@ class TestUtil {
   }
 }
 
-export { TestUtil };
+export { TestUtil, commandResponse };

@@ -1,6 +1,7 @@
 import config from "../config/index.js";
 import { logger } from "../utils/index.js";
 import { once } from "events";
+import { AppError } from "../errors/AppError.js";
 
 import { Controller } from "../controller/index.js";
 
@@ -73,6 +74,14 @@ async function routes(req, res) {
 }
 
 function handleError(err, res) {
+  logger.info("Cheguei aqui");
+  if (err instanceof AppError) {
+    logger.error(err.message);
+
+    res.writeHead(err.statusCode);
+    return res.end();
+  }
+
   if (err.message.includes("ENOENT")) {
     logger.error(`asset not found ${err.stack}`);
 

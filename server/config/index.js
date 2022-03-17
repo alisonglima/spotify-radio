@@ -22,6 +22,8 @@ export default {
   },
   location: {
     home: "/home",
+    controller: "/controller",
+    stream: "/stream",
   },
   constants: {
     CONTENT_TYPE: {

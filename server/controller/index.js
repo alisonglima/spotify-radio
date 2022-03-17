@@ -1,5 +1,6 @@
 import { Service } from "../service/index.js";
 import { logger } from "../utils/index.js";
+import { AppError } from "../errors/AppError.js";
 
 class Controller {
   constructor() {
@@ -27,7 +28,7 @@ class Controller {
       return result;
     }
 
-    return this.service.startStreaming();
+    throw new AppError(`Unknown command: ${command}`, 400);
   }
 
   createClientStream() {

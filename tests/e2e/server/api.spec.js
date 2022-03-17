@@ -17,11 +17,10 @@ const possibleCommands = { start: "start", stop: "stop" };
 
 describe("API E2E Suite Test", () => {
   const pipeAndReadStreamData = TestUtil.pipeAndReadStreamData;
+  const getTestServer = TestUtil.getTestServer;
+  const commandSender = TestUtil.commandSender;
 
   describe("client workflow", () => {
-    const getTestServer = TestUtil.getTestServer;
-    const commandSender = TestUtil.commandSender;
-
     it("GET /stream should not receive data stream if the process is not playing", async () => {
       const server = await getTestServer();
       const onChunk = jest.fn();
@@ -111,8 +110,20 @@ describe("API E2E Suite Test", () => {
       expect(testServerResponse.status).toStrictEqual(200);
       expect(testServerResponse.text).toStrictEqual(commandResponse);
     });
+  });
 
-    it("POST /controller should return error if an invalid command is sent", async () => {
+  describe("exceptions", () => {
+    it("GET /invalid-route should respond with 404 when try access a non-existent route", async () => {
+      const server = await getTestServer();
+
+      const testServerResponse = await server.testServer.get("/invalid-route");
+
+      server.kill();
+
+      expect(testServerResponse.status).toStrictEqual(404);
+    });
+
+    it("POST /controller should respond with 400 if an invalid command is sent", async () => {
       const server = await getTestServer();
 
       const testServerResponse = await server.testServer

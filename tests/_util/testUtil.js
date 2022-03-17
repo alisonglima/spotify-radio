@@ -1,6 +1,16 @@
 /* istanbul ignore file */
-import { jest } from "@jest/globals";
+import { jest, expect } from "@jest/globals";
+import supertest from "supertest";
+import { Transform } from "stream";
 import { Readable, Writable } from "stream";
+import portfinder from "portfinder";
+
+import Server from "../../server/server.js";
+
+const getAvailablePort = portfinder.getPortPromise;
+const commandResponse = JSON.stringify({
+  result: "ok",
+});
 
 class TestUtil {
   static generateReadableStream(data) {
@@ -43,6 +53,50 @@ class TestUtil {
     return {
       values: () => Object.values(data),
       ...data,
+    };
+  }
+
+  static async getTestServer() {
+    const getSuperTest = (port) => supertest(`http://localhost:${port}`);
+    const port = await getAvailablePort();
+
+    return new Promise((resolve, reject) => {
+      const server = Server.listen(port)
+        .once("listening", () => {
+          const testServer = getSuperTest(port);
+          const response = {
+            testServer,
+            kill() {
+              server.close();
+            },
+          };
+
+          return resolve(response);
+        })
+        .once("error", reject);
+    });
+  }
+
+  static pipeAndReadStreamData(stream, onChunk) {
+    const transform = new Transform({
+      transform(chunk, encoding, callback) {
+        onChunk(chunk);
+        callback(null, chunk);
+      },
+    });
+
+    return stream.pipe(transform);
+  }
+
+  static commandSender(testServer) {
+    return {
+      async send(command) {
+        const response = await testServer.post("/controller").send({
+          command,
+        });
+
+        expect(response.text).toStrictEqual(commandResponse);
+      },
     };
   }
 }
